@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Map<String, Object>> pictureList;
     private RecyclerView recyclerViewPicture;
+    ImageView imageViewMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewData.setAdapter(staggerAdapter);
 
         //=======第二個recyclerView======
+        //取得圖片元件
+        imageViewMain = findViewById(R.id.img_main);
+        imageViewMain.setVisibility(View.INVISIBLE);
+
         //準備資料
         pictureList = new ArrayList<Map<String, Object>>();
         for(int i = 0 ; i < pictureNumber.length ; i++){
@@ -81,9 +88,11 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager mlinearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
         recyclerViewPicture.setLayoutManager(mlinearLayoutManager);
         //建立自定義適配器
-        MyLinearAdapter linearAdapter = new MyLinearAdapter(context, pictureList);
+        MyLinearAdapter linearAdapter = new MyLinearAdapter(context, pictureList,imageViewMain);
         //連接適配器
         recyclerViewPicture.setAdapter(linearAdapter);
+
+
 
 
     }

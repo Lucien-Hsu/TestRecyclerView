@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/recyclerView_pic" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/img_main"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
